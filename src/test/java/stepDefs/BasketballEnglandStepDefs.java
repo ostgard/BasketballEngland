@@ -47,13 +47,13 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson@mailmetrash.com");
 
         // Password
-        driver.findElement(By.cssSelector("signupunlicenced_password")).sendKeys("AirJordan23!");
-        driver.findElement(By.cssSelector("signupunlicenced_confirmpassword")).sendKeys("AirJordan23!");
+        driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
+        driver.findElement(By.cssSelector("#signupunlicenced_confirmpassword")).sendKeys("AirJordan23!");
 
         // Checkboxes for terms
-        driver.findElement(By.id("agreeToTerms")).click();
-        driver.findElement(By.id("over18")).click();
-        driver.findElement(By.id("agreeToConduct")).click();
+        driver.findElement(By.cssSelector("label[for=sign_up_25] > span.box")).click();
+        driver.findElement(By.cssSelector("label[for=sign_up_26] > span.box")).click();
+        driver.findElement(By.cssSelector("label[for=fanmembersignup_agreetocodeofethicsandconduct] > span.box")).click();
 
         // Submit form
         driver.findElement(By.id("submitButton")).click();
