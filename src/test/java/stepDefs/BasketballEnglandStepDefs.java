@@ -35,14 +35,14 @@ public class BasketballEnglandStepDefs {
 
     @When("Jag fyller i registreringsformuläret med giltig information")
     public void jagFyllerIRegistreringsformularetMedGiltigInformation() {
-        // Date of birth
+        // Ange Date of birth
         driver.findElement(By.cssSelector("#dp")).sendKeys("26/12/1999");
 
-        // Personal information
+        // Fyller i namn
         driver.findElement(By.cssSelector("#member_firstname")).sendKeys("Isak");
         driver.findElement(By.cssSelector("#member_lastname")).sendKeys("Carlsson");
 
-        // Email information
+        // Email
         driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson@mailmetrash.com");
         driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson@mailmetrash.com");
 
