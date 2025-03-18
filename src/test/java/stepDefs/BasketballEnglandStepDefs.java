@@ -54,6 +54,11 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#signupunlicenced_confirmpassword")).sendKeys("AirJordan23!");
 
         // Checkboxes for terms
+
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        WebElement agreeToTerms = wait.until(ExpectedConditions.elementToBeClickable(By.id("agreeToTerms")));
+//        agreeToTerms.click();
+
         driver.findElement(By.cssSelector("label[for=sign_up_25] > span.box")).click();
         driver.findElement(By.cssSelector("label[for=sign_up_26] > span.box")).click();
         driver.findElement(By.cssSelector("label[for=fanmembersignup_agreetocodeofethicsandconduct] > span.box")).click();
@@ -66,9 +71,12 @@ public class BasketballEnglandStepDefs {
     public void enSidaMedMeddelandeOmLyckadRegistreringVisas() {
         // Wait for success message to appear
         WebElement successMessage = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".success-message")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.background-gray > h2")));
 
         // Verify success message is displayed
+        //THANK YOU FOR CREATING AN ACCOUNT WITH BASKETBALL ENGLAND
         assert successMessage.isDisplayed() : "Success message was not displayed";
+
+
     }
 }
