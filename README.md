@@ -1,6 +1,6 @@
 På https://membership.basketballengland.co.uk/NewSupporterAccount 
 kan man registrera sig som användare
-Här är skrivet testfall som testar denna
+Här är testfall som testar denna
 registreringsfunktion genom automatisering
 via Cucumber och Selenium
 
