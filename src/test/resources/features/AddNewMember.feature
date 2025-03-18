@@ -5,7 +5,7 @@ Feature: Som ett basket fan vill jag kunna registrera ett medlemsskap hos Basket
     Given Create an account sidan finns
 
   Scenario: Lyckad registrering av medlemsskap
-    When Jag fyller i registreringsformuläret med giltig information
+    When Jag fyller i registreringsformularet med giltig information
     Then En sida med meddelande om lyckad registrering visas
 
 

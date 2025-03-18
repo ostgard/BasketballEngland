@@ -33,8 +33,11 @@ public class BasketballEnglandStepDefs {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#dp")));
     }
 
-    @When("Jag fyller i registreringsformuläret med giltig information")
-    public void jagFyllerIRegistreringsformularetMedGiltigInformation() {
+    @When("Jag fyller i registreringsformularet med giltig information")
+    public void jag_fyller_i_registreringsformularet_med_giltig_information() {
+
+//    @When("Jag fyller i registreringsformuläret med giltig information")
+//    public void jagFyllerIRegistreringsformularetMedGiltigInformation() {
         // Ange Date of birth
         driver.findElement(By.cssSelector("#dp")).sendKeys("26/12/1999");
 
