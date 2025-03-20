@@ -6,6 +6,7 @@ Feature: Som ett basket fan vill jag kunna registrera ett medlemsskap hos Basket
 
   Scenario: Lyckad registrering av medlemsskap
     When Jag fyller i registreringsformularet med giltig information
+    * Jag klickar pa Confirm and Join knappen
     Then En sida med meddelande om lyckad registrering visas
 
 

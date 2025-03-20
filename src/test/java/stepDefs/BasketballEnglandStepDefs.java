@@ -16,12 +16,12 @@ import java.time.Duration;
 
 public class BasketballEnglandStepDefs {
     private WebDriver driver;
-    public void waitAndClick(By locator){
+
+    public void waitAndClick(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
         element.click();
     }
-
 
 
     @After
@@ -39,7 +39,7 @@ public class BasketballEnglandStepDefs {
 //        new WebDriverWait(driver, Duration.ofSeconds(10))
 //                // .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#dp")));
 //                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='signup_form']")));
-waitAndClick(By.xpath("(//form[@id='signup_form'])"));
+        waitAndClick(By.xpath("(//form[@id='signup_form'])"));
     }
 
     @When("Jag fyller i registreringsformularet med giltig information")
@@ -74,16 +74,20 @@ waitAndClick(By.xpath("(//form[@id='signup_form'])"));
         // Ange Date of birth
         driver.findElement(By.cssSelector("#dp")).sendKeys("26/12/1999");
 
+    }
+
+    @When("Jag klickar pa Confirm and Join knappen")
+    public void jagKlickarPaConfirmAndJoinKnappen() {
         // Submit form
         waitAndClick(By.cssSelector("div.form-actions.noborder > input.btn.btn-big.red[type='submit']"));
-
     }
 
     @Then("En sida med meddelande om lyckad registrering visas")
     public void enSidaMedMeddelandeOmLyckadRegistreringVisas() {
         // Wait for success message to appear
-//        WebElement successMessage = new WebDriverWait(driver, Duration.ofSeconds(50))
-//                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.background-gray > h2.bold.gray.text-center.margin-bottom-40")));
+        WebElement successMessage = new WebDriverWait(driver, Duration.ofSeconds(50))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.background-gray > h2.bold.gray.text-center.margin-bottom-40")));
+
 
         driver.findElement(By.cssSelector("div.background-gray > h2.bold.gray.text-center.margin-bottom-40"));
 
@@ -91,8 +95,10 @@ waitAndClick(By.xpath("(//form[@id='signup_form'])"));
         //THANK YOU FOR CREATING AN ACCOUNT WITH BASKETBALL ENGLAND
 
 
-      //  assert successMessage.isDisplayed() : "Success message was not displayed";
+        //  assert successMessage.isDisplayed() : "Success message was not displayed";
 
 
     }
+
+
 }
