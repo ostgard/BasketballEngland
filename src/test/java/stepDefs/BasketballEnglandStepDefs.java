@@ -30,7 +30,9 @@ public class BasketballEnglandStepDefs {
         driver.get("https://membership.basketballengland.co.uk/NewSupporterAccount");
         // Verify page is loaded
         new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#dp")));
+               // .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#dp")));
+        .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='signup_form']")));
+
     }
 
     @When("Jag fyller i registreringsformularet med giltig information")
@@ -38,8 +40,7 @@ public class BasketballEnglandStepDefs {
 
 //    @When("Jag fyller i registreringsformuläret med giltig information")
 //    public void jagFyllerIRegistreringsformularetMedGiltigInformation() {
-        // Ange Date of birth
-        driver.findElement(By.cssSelector("#dp")).sendKeys("26/12/1999");
+
 
         // Fyller i namn
         driver.findElement(By.cssSelector("#member_firstname")).sendKeys("Isak");
@@ -63,8 +64,13 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("label[for=sign_up_26] > span.box")).click();
         driver.findElement(By.cssSelector("label[for=fanmembersignup_agreetocodeofethicsandconduct] > span.box")).click();
 
+        // Ange Date of birth
+        driver.findElement(By.cssSelector("#dp")).sendKeys("26/12/1999");
+
         // Submit form
-        driver.findElement(By.id("submitButton")).click();
+        //
+        driver.findElement(By.cssSelector("div.form-actions.noborder > input.btn.btn-big.red[type='submit']")).click();
+
     }
 
     @Then("En sida med meddelande om lyckad registrering visas")
