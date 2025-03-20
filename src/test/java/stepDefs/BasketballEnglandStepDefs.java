@@ -16,6 +16,13 @@ import java.time.Duration;
 
 public class BasketballEnglandStepDefs {
     private WebDriver driver;
+    public void waitAndClick(By locator){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        element.click();
+    }
+
+
 
     @After
     public void teardown() {
@@ -30,8 +37,8 @@ public class BasketballEnglandStepDefs {
         driver.get("https://membership.basketballengland.co.uk/NewSupporterAccount");
         // Verify page is loaded
         new WebDriverWait(driver, Duration.ofSeconds(10))
-               // .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#dp")));
-        .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='signup_form']")));
+                // .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#dp")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='signup_form']")));
 
     }
 
@@ -68,7 +75,6 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#dp")).sendKeys("26/12/1999");
 
         // Submit form
-        //
         driver.findElement(By.cssSelector("div.form-actions.noborder > input.btn.btn-big.red[type='submit']")).click();
 
     }
@@ -76,8 +82,9 @@ public class BasketballEnglandStepDefs {
     @Then("En sida med meddelande om lyckad registrering visas")
     public void enSidaMedMeddelandeOmLyckadRegistreringVisas() {
         // Wait for success message to appear
-        WebElement successMessage = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.background-gray > h2")));
+        WebElement successMessage = new WebDriverWait(driver, Duration.ofSeconds(50))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.background-gray > h2.bold.gray.text-center.margin-bottom-40")));
+
 
         // Verify success message is displayed
         //THANK YOU FOR CREATING AN ACCOUNT WITH BASKETBALL ENGLAND
