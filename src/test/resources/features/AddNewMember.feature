@@ -9,6 +9,24 @@ Feature: Som ett basket fan vill jag kunna registrera ett medlemsskap hos Basket
     * Jag klickar pa Confirm and Join knappen
     Then En sida med meddelande om lyckad registrering visas
 
+  Scenario: Registrering misslyckas - efternamn saknas
+    When Jag fyller i registreringsformularet men utelämnar efternamn
+    * Jag klickar pa Confirm and Join knappen
+    Then Ett felmeddelande visas om att efternamn krävs
+    And Jag stannar kvar pa registreringssidan
+
+  Scenario: Registrering misslyckas - lösenord matchar inte
+    When Jag fyller i registreringsformularet med olika värden i lösenordsfälten
+    * Jag klickar pa Confirm and Join knappen
+    Then Ett felmeddelande visas om att lösenorden inte stämmer överens
+    And Jag stannar kvar pa registreringssidan
+
+  Scenario: Registrering misslyckas - användarvillkor inte godkända
+    When Jag fyller i registreringsformularet men markerar inte rutan för användarvillkor
+    * Jag klickar pa Confirm and Join knappen
+    Then Ett felmeddelande visas om att användarvillkoren måste godkännas
+    And Jag stannar kvar pa registreringssidan
+
 
 
     #When Jag fyller i Date of birth genom att ange "26/12/1999"
