@@ -45,8 +45,8 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#member_lastname")).sendKeys("Carlsson");
 
         // Email
-        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson4@mailmetrash.com");
-        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson4@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson5@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson5@mailmetrash.com");
 
         // Password
         driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
@@ -102,21 +102,6 @@ public class BasketballEnglandStepDefs {
         }
     }
 
-
-//    @Then("En sida med meddelande om lyckad registrering visas")
-//    public void enSidaMedMeddelandeOmLyckadRegistreringVisas() {
-//        // Wait for success message to appear
-//        WebElement successMessage = new WebDriverWait(driver, Duration.ofSeconds(50))
-//                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.background-gray > h2.bold.gray.text-center.margin-bottom-40")));
-//
-//        driver.findElement(By.cssSelector("div.background-gray > h2.bold.gray.text-center.margin-bottom-40"));
-//
-//        // Verify success message is displayed
-//        assert successMessage.isDisplayed() : "Success message was not displayed";
-//    }
-
-
-    //Erikas senaste version:
     @Then("En sida med meddelande om lyckad registrering visas")
     public void enSidaMedMeddelandeOmLyckadRegistreringVisas() {
         // Wait for the red button to appear, which indicates successful registration
@@ -134,25 +119,4 @@ public class BasketballEnglandStepDefs {
     }
 
 
-
-//    //Claude felsöker..
-//    @Then("En sida med meddelande om lyckad registrering visas")
-//    public void enSidaMedMeddelandeOmLyckadRegistreringVisas() {
-//        // Vänta en stund och skriv ut sidans titel och URL för felsökning
-//        try {
-//            Thread.sleep(3000);
-//            System.out.println("Current page title: " + driver.getTitle());
-//            System.out.println("Current URL: " + driver.getCurrentUrl());
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // Fortsätt med din befintliga kod...
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-//        WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
-//                By.cssSelector("a.btn.red.margin-bottom-20")
-//        ));
-//
-//        assert successMessage.isDisplayed() : "Success message was not displayed";
-//    }
 }
