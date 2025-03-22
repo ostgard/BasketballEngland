@@ -28,19 +28,3 @@ Feature: Som ett basket fan vill jag kunna registrera ett medlemsskap hos Basket
     And Jag stannar kvar pa registreringssidan
 
 
-
-    #When Jag fyller i Date of birth genom att ange "26/12/1999"
-#    And Jag fyller i First Name "Isak"
- #   * Jag fyller i Last Name "Carlsson"
-  #  * Jag fyller i Email Address "isak.carlsson@mailmetrash.com"
-   # * och Confirm Email Address "isak.carlsson@mailmetrash.com"
-    #* jag väljer ett lösenord "AirJordan23!"
-    #* Skriver in mitt lösenord igen "AirJordan23!"
-    #* Jag godkänner Terms and Conditions
-    #* Jag intygar att jag är över 18 år
-    #* Jag godkänner Code of conduct
-    #* Jag klickar på Confirm and Join knappen
-   # Then En sida med meddelande om lyckad registrering visas
-
-
-

@@ -1,6 +1,7 @@
 package stepDefs;
 
 import io.cucumber.java.After;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -119,4 +120,31 @@ public class BasketballEnglandStepDefs {
     }
 
 
+    @When("Jag fyller i registreringsformularet men utelämnar efternamn")
+    public void jagFyllerIRegistreringsformularetMenUtelamnarEfternamn() {
+    }
+
+    @Then("Ett felmeddelande visas om att efternamn krävs")
+    public void ettFelmeddelandeVisasOmAttEfternamnKravs() {
+    }
+
+    @And("Jag stannar kvar pa registreringssidan")
+    public void jagStannarKvarPaRegistreringssidan() {
+    }
+
+    @When("Jag fyller i registreringsformularet med olika värden i lösenordsfälten")
+    public void jagFyllerIRegistreringsformularetMedOlikaVardenILosenordsfalten() {
+    }
+
+    @Then("Ett felmeddelande visas om att lösenorden inte stämmer överens")
+    public void ettFelmeddelandeVisasOmAttLosenordenInteStammerOverens() {
+    }
+
+    @When("Jag fyller i registreringsformularet men markerar inte rutan för användarvillkor")
+    public void jagFyllerIRegistreringsformularetMenMarkerarInteRutanForAnvandarvillkor() {
+    }
+
+    @Then("Ett felmeddelande visas om att användarvillkoren måste godkännas")
+    public void ettFelmeddelandeVisasOmAttAnvandarvillkorenMasteGodkannas() {
+    }
 }
