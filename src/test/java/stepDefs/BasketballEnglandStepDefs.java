@@ -46,8 +46,8 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#member_lastname")).sendKeys("Carlsson");
 
         // Email
-        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson5@mailmetrash.com");
-        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson5@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson7@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson7@mailmetrash.com");
 
         // Password
         driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
@@ -62,63 +62,21 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#dp")).sendKeys("26/12/1999");
     }
 
-//    @When("Jag klickar pa Confirm and Join knappen")
-//    public void jagKlickarPaConfirmAndJoinKnappen() {
-//        // Submit form
-//        waitAndClick(By.cssSelector("div.form-actions.noborder > input.btn.btn-big.red[type='submit']"));
-//    }
-
-
     @When("Jag klickar pa Confirm and Join knappen")
-    public void jag_klickar_pa_confirm_and_join_knappen() {
-        // Print URL before clicking
-        System.out.println("URL before clicking: " + driver.getCurrentUrl());
-
+    public void jagKlickarPaConfirmAndJoinKnappen() {
         // Submit form
-        WebElement submitButton = driver.findElement(By.name("join"));
-
-//        By.cssSelector("input[value='CONFIRM AND JOIN']"));
-//        driver.findElement(By.name("join")).click();
-        //cssSelector("div.form-actions.noborder > input.btn.btn-big.red[type='submit']"
-
-        System.out.println("Submit button found: " + submitButton.isDisplayed());
-
-        // Try JavaScript click instead
-        try {
-            submitButton.click();
-            System.out.println("Regular click performed");
-        } catch (Exception e) {
-            System.out.println("Regular click failed: " + e.getMessage());
-            // Try JavaScript click as fallback
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", submitButton);
-            System.out.println("JavaScript click performed");
-        }
-
-        // Wait a moment and print URL after clicking
-        try {
-            Thread.sleep(3000);
-            System.out.println("URL after clicking: " + driver.getCurrentUrl());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitAndClick(By.cssSelector("div.form-actions.noborder > input.btn.btn-big.red[type='submit']"));
     }
 
     @Then("En sida med meddelande om lyckad registrering visas")
     public void enSidaMedMeddelandeOmLyckadRegistreringVisas() {
         // Wait for the red button to appear, which indicates successful registration
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-
         WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.btn.red.margin-bottom-20"))
         );
-        //      (By.cssSelector("h2.bold.gray.text-center.margin-bottom-40")));
-
-
         // Verifiera att knappen är synlig
         assert successMessage.isDisplayed() : "Success message was not displayed";
-
-        //        System.out.println("Success message text: " + successMessage.getText());
     }
-
 
     @When("Jag fyller i registreringsformularet men utelämnar efternamn")
     public void jagFyllerIRegistreringsformularetMenUtelamnarEfternamn() {
@@ -147,4 +105,6 @@ public class BasketballEnglandStepDefs {
     @Then("Ett felmeddelande visas om att användarvillkoren måste godkännas")
     public void ettFelmeddelandeVisasOmAttAnvandarvillkorenMasteGodkannas() {
     }
+
+
 }
