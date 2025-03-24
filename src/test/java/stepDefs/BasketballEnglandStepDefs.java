@@ -6,13 +6,17 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class BasketballEnglandStepDefs {
     private WebDriver driver;
@@ -23,10 +27,13 @@ public class BasketballEnglandStepDefs {
         element.click();
     }
 
+    private void assertTrue(String s, boolean b) {
+    }
+
     @After
     public void teardown() {
         if (driver != null) {
-    //        driver.quit();
+            //        driver.quit();
         }
     }
 
@@ -46,8 +53,8 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#member_lastname")).sendKeys("Carlsson");
 
         // Email
-        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson11@mailmetrash.com");
-        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson11@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson13@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson13@mailmetrash.com");
 
         // Password
         driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
@@ -79,16 +86,14 @@ public class BasketballEnglandStepDefs {
     }
 
 
-
-
     @When("Jag fyller i registreringsformularet men utelämnar efternamn")
     public void jagFyllerIRegistreringsformularetMenUtelamnarEfternamn() {
         // Fyller i namn - men utelämnar efternamn
         driver.findElement(By.cssSelector("#member_firstname")).sendKeys("Isak");
 
         // Email
-        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak@mailmetrash.com");
-        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak3@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak3@mailmetrash.com");
 
         // Password
         driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
@@ -119,13 +124,8 @@ public class BasketballEnglandStepDefs {
 
         // Verifiera att felmeddelandet innehåller rätt text
         assert errorMessage.isDisplayed() : "Felmeddelande om efternamn visades inte";
-        assert errorMessage.getText().contains("required") ||
-                errorMessage.getText().contains("krävs") :
-                "Felmeddelandet innehåller inte förväntad text: " + errorMessage.getText();
+        assert errorMessage.getText().contains("required") : "Felmeddelandet innehåller inte förväntad text: " + errorMessage.getText();
     }
-
-
-
 
 
     @When("Jag fyller i registreringsformularet med olika värden i lösenordsfälten")
@@ -135,8 +135,8 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#member_lastname")).sendKeys("Carlsson");
 
         // Email
-        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson21@mailmetrash.com");
-        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson21@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson23@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson23@mailmetrash.com");
 
         // Password
         driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
@@ -157,7 +157,12 @@ public class BasketballEnglandStepDefs {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector("span.warning.field-validation-error > span")));
+
+        // Assert textinnehållet i felmeddelandet
+        String expectedErrorText = "Password did not match";
+        assertEquals("Felmeddelande ska innehålla korrekt text", expectedErrorText, errorMessage.getText());
     }
+
 
     @When("Jag fyller i registreringsformularet men markerar inte rutan för användarvillkor")
     public void jagFyllerIRegistreringsformularetMenMarkerarInteRutanForAnvandarvillkor() {
@@ -166,17 +171,14 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#member_lastname")).sendKeys("Carlsson");
 
         // Email
-        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson31@mailmetrash.com");
-        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson31@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson33@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson33@mailmetrash.com");
 
         // Password
         driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
         driver.findElement(By.cssSelector("#signupunlicenced_confirmpassword")).sendKeys("AirJordan23!");
 
         // Checkboxes for terms
-//        driver.findElement(By.cssSelector("label[for=sign_up_25] > span.box")).click();
-//        driver.findElement(By.cssSelector("label[for=sign_up_26] > span.box")).click();
-//        driver.findElement(By.cssSelector("label[for=fanmembersignup_agreetocodeofethicsandconduct] > span.box")).click();
 
         // Ange Date of birth
         driver.findElement(By.cssSelector("#dp")).sendKeys("26/12/1999");
@@ -188,7 +190,10 @@ public class BasketballEnglandStepDefs {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector("span.warning.field-validation-error > span")));
+        // Assert Kontrollera textinnehållet i felmeddelandet
+        String actualErrorText = errorMessage.getText();
+        assertTrue("Felmeddelandet ska innehålla text om användarvillkor",
+                actualErrorText.toLowerCase().contains("accept")
+        );
     }
-
-
 }
