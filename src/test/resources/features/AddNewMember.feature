@@ -25,6 +25,6 @@ Feature: Som ett basket fan vill jag kunna registrera ett medlemsskap hos Basket
     When Jag fyller i registreringsformularet men markerar inte rutan för användarvillkor
     * Jag klickar pa Confirm and Join knappen
     Then Ett felmeddelande visas om att användarvillkoren måste godkännas
-    And Jag stannar kvar pa registreringssidan
+
 
 

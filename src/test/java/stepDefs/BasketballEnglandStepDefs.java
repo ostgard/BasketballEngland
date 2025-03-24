@@ -46,8 +46,8 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#member_lastname")).sendKeys("Carlsson");
 
         // Email
-        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson8@mailmetrash.com");
-        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson8@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson11@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson11@mailmetrash.com");
 
         // Password
         driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
@@ -87,8 +87,8 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#member_firstname")).sendKeys("Isak");
 
         // Email
-        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.1@mailmetrash.com");
-        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.1@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak@mailmetrash.com");
 
         // Password
         driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
@@ -135,8 +135,8 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#member_lastname")).sendKeys("Carlsson");
 
         // Email
-        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson20@mailmetrash.com");
-        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson20@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson21@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson21@mailmetrash.com");
 
         // Password
         driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
@@ -161,10 +161,33 @@ public class BasketballEnglandStepDefs {
 
     @When("Jag fyller i registreringsformularet men markerar inte rutan för användarvillkor")
     public void jagFyllerIRegistreringsformularetMenMarkerarInteRutanForAnvandarvillkor() {
+        // Fyller i namn
+        driver.findElement(By.cssSelector("#member_firstname")).sendKeys("Isak");
+        driver.findElement(By.cssSelector("#member_lastname")).sendKeys("Carlsson");
+
+        // Email
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson31@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson31@mailmetrash.com");
+
+        // Password
+        driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
+        driver.findElement(By.cssSelector("#signupunlicenced_confirmpassword")).sendKeys("AirJordan23!");
+
+        // Checkboxes for terms
+//        driver.findElement(By.cssSelector("label[for=sign_up_25] > span.box")).click();
+//        driver.findElement(By.cssSelector("label[for=sign_up_26] > span.box")).click();
+//        driver.findElement(By.cssSelector("label[for=fanmembersignup_agreetocodeofethicsandconduct] > span.box")).click();
+
+        // Ange Date of birth
+        driver.findElement(By.cssSelector("#dp")).sendKeys("26/12/1999");
     }
 
     @Then("Ett felmeddelande visas om att användarvillkoren måste godkännas")
     public void ettFelmeddelandeVisasOmAttAnvandarvillkorenMasteGodkannas() {
+        // Vänta på att felmeddelandet visas
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.cssSelector("span.warning.field-validation-error > span")));
     }
 
 
