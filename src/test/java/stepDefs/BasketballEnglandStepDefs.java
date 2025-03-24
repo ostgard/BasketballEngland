@@ -46,8 +46,8 @@ public class BasketballEnglandStepDefs {
         driver.findElement(By.cssSelector("#member_lastname")).sendKeys("Carlsson");
 
         // Email
-        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson7@mailmetrash.com");
-        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson7@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.carlsson8@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.carlsson8@mailmetrash.com");
 
         // Password
         driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
@@ -80,15 +80,48 @@ public class BasketballEnglandStepDefs {
 
     @When("Jag fyller i registreringsformularet men utelämnar efternamn")
     public void jagFyllerIRegistreringsformularetMenUtelamnarEfternamn() {
+        // Fyller i namn - men utelämnar efternamn
+        driver.findElement(By.cssSelector("#member_firstname")).sendKeys("Isak");
+
+        // Email
+        driver.findElement(By.cssSelector("#member_emailaddress")).sendKeys("isak.1@mailmetrash.com");
+        driver.findElement(By.cssSelector("#member_confirmemailaddress")).sendKeys("isak.1@mailmetrash.com");
+
+        // Password
+        driver.findElement(By.cssSelector("#signupunlicenced_password")).sendKeys("AirJordan23!");
+        driver.findElement(By.cssSelector("#signupunlicenced_confirmpassword")).sendKeys("AirJordan23!");
+
+        // Checkboxes for terms
+        driver.findElement(By.cssSelector("label[for=sign_up_25] > span.box")).click();
+        driver.findElement(By.cssSelector("label[for=sign_up_26] > span.box")).click();
+        driver.findElement(By.cssSelector("label[for=fanmembersignup_agreetocodeofethicsandconduct] > span.box")).click();
+
+        // Ange Date of birth
+        driver.findElement(By.cssSelector("#dp")).sendKeys("26/12/1999");
+    }
+
+    @And("Jag klickar på Registrera-knappen")
+    public void jagKlickarPåRegistreraKnappen() {
+        // Hitta och klicka på registreringsknappen
+        WebElement submitButton = driver.findElement(By.cssSelector("input[type='submit']"));
+        submitButton.click();
     }
 
     @Then("Ett felmeddelande visas om att efternamn krävs")
     public void ettFelmeddelandeVisasOmAttEfternamnKravs() {
+        // Vänta på att felmeddelandet visas
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//span[contains(text(), 'Last Name is required')]")));
+
+        // Verifiera att felmeddelandet innehåller rätt text
+        assert errorMessage.isDisplayed() : "Felmeddelande om efternamn visades inte";
+        assert errorMessage.getText().contains("required") ||
+                errorMessage.getText().contains("krävs") :
+                "Felmeddelandet innehåller inte förväntad text: " + errorMessage.getText();
     }
 
-    @And("Jag stannar kvar pa registreringssidan")
-    public void jagStannarKvarPaRegistreringssidan() {
-    }
+
 
     @When("Jag fyller i registreringsformularet med olika värden i lösenordsfälten")
     public void jagFyllerIRegistreringsformularetMedOlikaVardenILosenordsfalten() {

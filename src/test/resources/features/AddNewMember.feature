@@ -13,7 +13,7 @@ Feature: Som ett basket fan vill jag kunna registrera ett medlemsskap hos Basket
     When Jag fyller i registreringsformularet men utelämnar efternamn
     * Jag klickar pa Confirm and Join knappen
     Then Ett felmeddelande visas om att efternamn krävs
-    And Jag stannar kvar pa registreringssidan
+
 
   Scenario: Registrering misslyckas - lösenord matchar inte
     When Jag fyller i registreringsformularet med olika värden i lösenordsfälten
